@@ -1,0 +1,259 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %} {{detail.Brand}} {% endblock title %}
+
+{% block banner_slider %} 
+
+<link rel="stylesheet" href="{% static 'main/css/lightbox.min.css' %}">
+
+    <section class="section-bg">
+     <div class="container">
+        
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="section-title">
+                </div>
+            </div>
+        </div>
+        <div class="_flex">
+            {% if Product_img %}
+            <div class="row">
+                    <div class="spec-container">
+                        <ul class="spec-thumb" style="display: block;">
+                            <li onmouseover="changeImageSrc('{{ Product_img.0.image.url }} ')" > <a href="{{ Product_img.0.image.url }}" data-lightbox="y"><img src="{{ Product_img.0.image.url }}" alt="" ></a></li>
+                            <li onmouseover="changeImageSrc('{{ Product_img.1.image.url }}')" > <a href="{{ Product_img.1.image.url }}" data-lightbox="y"><img src="{{ Product_img.1.image.url }}" alt="" ></a></li>
+                            <li onmouseover="changeImageSrc('{{ Product_img.2.image.url }}')" > <a href="{{ Product_img.2.image.url }}" data-lightbox="y"><img src="{{ Product_img.2.image.url }}" alt="" ></a></li>
+                            <li onmouseover="changeImageSrc('{{ Product_img.3.image.url }}')" > <a href="{{ Product_img.3.image.url }}" data-lightbox="y"><img src="{{ Product_img.3.image.url }}" alt="" ></a></li>
+                            <!-- <li onmouseover="changeImageSrc('{{ Product_img.3.image.url }}')"><img src="{{ Product_img.3.image.url }}" alt=""></li> -->
+                        </ul>
+                        <div class="imgBox">
+                            <img src="{{ Product_img.0.image.url }}" alt="" class="model-img">
+                        </div>
+                    </div>
+                    <script>
+                        function changeImageSrc(anything){
+                            document.querySelector('.model-img').src = anything;
+                
+                        }
+                        // lightGallery(document.querySelector('.model-img'))
+
+                    </script>
+            {% endif %}
+            {% if detail %}
+            
+                <div class="key-features">
+                    <div class="single-product" style=" float: right; padding: 20px; background: linear-gradient(230deg,#f5f5f5 30%,#fafeff 70%); " >
+                        <h3>KEY FEATURES</h3>
+                        <i class="fa fa-desktop" style="font-size:20px;"></i><h5 style="font-size: 15px; width: fit-content; ">Display : {{detail.Screen_Size}}</h5>
+                        <i class="fa fa-microchip" style="font-size:20px;"></i><h5 style="font-size: 15px; width: fit-content;">Processor : {{detail.Processor_make}}</h5>
+                        <i class="fa fa-camera-retro" style="font-size:20px;"></i><h5 style="font-size: 15px; width: fit-content;">Front Camera : {{detail.Front_Camera}}</h5>
+                        <i class="fa fa-memory" style="font-size:20px;"></i><h5 style="font-size: 15px; width: fit-content;">RAM : {{detail.RAM}}</h5>
+                        <i class="fa fa-battery-three-quarters" style="font-size:20px;"></i><h5 style="font-size: 15px; width: fit-content;">Battery : {{detail.Battery_capacity}}</h5>
+                        <i class="fa fa-camera" style="font-size:20px;"></i><h5 style="font-size: 15px; width: fit-content;">Rear Camera : {{detail.Rear_Camera}}</h5>
+                        <i class="fa fa-hdd" style="font-size:20px;"></i><h5 style="font-size: 15px; width: fit-content;">Storage : {{detail.Internal_storage}}</h5>
+                    </div>
+                </div>
+                <div class="price-table">
+                    <div class="single-product" style=" float: right; padding: 20px; background: linear-gradient(230deg,#f5f5f5 30%,#fafeff 70%); " >
+
+                        <h3>Price Table</h3>
+                        <i class="fa fa-desktop" style="font-size:20px;"></i><h5 style="font-size: 15px; width: fit-content; "></h5>
+                        <i class="fa fa-microchip" style="font-size:20px;"></i><h5 style="font-size: 15px; width: fit-content;"></h5>
+                        <i class="fa fa-camera" style="font-size:20px;"></i><h5 style="font-size: 15px; width: fit-content;"></h5>
+                        <i class="fa fa-hdd" style="font-size:20px;"></i><h5 style="font-size: 15px; width: fit-content;"></h5>
+                    </div>
+                </div>
+                
+                <div class="row1" >
+                    <div class="scroll-bar">
+                            <div class="table">
+                                <h1><b class="table-header">General</b></h1><br>
+                                <table>
+                                    <tbody>
+                                        <tr class="tr">
+                                            <th class="cell">Brand:</th><th class="cell2">{{detail.Brand}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">Model:</th><th class="cell2">{{detail.Model_Name}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">Price in India:</th><th class="cell2">{{detail.Price_in_india}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">Release date:</th><th class="cell2">{{detail.Release_Data}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">Dimensions (mm):</th><th class="cell2">{{detail.Dimensions}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">Weight (g):</th><th class="cell2">{{detail.Weight}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">Battery capacity (mAh):</th><th class="cell2">{{detail.Battery_capacity}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">Fast charging:</th><th class="cell2">{{detail.Fast_charging}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">Colours:</th><th class="cell2">{{detail.Colours}}</th>
+                                        </tr>
+                                    </tbody>
+                                    
+                                </table>
+                            </div>
+                            <div class="table">
+                                <h1><b class="table-header">Display</b></h1><br>
+                                <table>
+                                    <tbody>
+                                        <tr class="tr">
+                                            <th class="cell">Screen size (inches):</th><th class="cell2">{{detail.Screen_Size}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">Touchscreen:</th><th class="cell2">{{detail.Touchscreen}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">Resolution:</th><th class="cell2">{{detail.Resolution}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">Aspect ratio:</th><th class="cell2">{{detail.Aspect_ratio}}</th>
+                                        </tr>
+                                    </tbody>
+                                    
+                                </table>
+                            </div>
+                            <div class="table">
+                                <h1><b class="table-header">Hardware</b></h1><br>
+                                <table>
+                                    <tbody>
+                                        <tr class="tr">
+                                            <th class="cell">Processor:</th><th class="cell2">{{detail.Processor_Core}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">Processor made by:</th><th class="cell2">{{detail.Processor_make}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">RAM:</th><th class="cell2">{{detail.RAM}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">Internal storage:</th><th class="cell2">{{detail.Internal_storage}}</th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="table">
+                                <h1><b class="table-header">Camera</b></h1><br>
+                                <table>
+                                    <tbody>
+                                        <tr class="tr">
+                                            <th class="cell">Rear camera:</th><th class="cell2">{{detail.Rear_Camera}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">No. of Rear Cameras:</th><th class="cell2">{{detail.No_of_Rear_Cameras}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">Rear autofocus:</th><th class="cell2">{{detail.Rear_autofocus}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">Rear flash:</th><th class="cell2">{{detail.Rear_flash}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">Front camera:</th><th class="cell2">{{detail.Front_Camera}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">No. of Front Cameras:</th><th class="cell2">{{detail.No_of_Front_Cameras}}</th>
+                                        </tr>
+                                    </tbody>
+                                    
+                                </table>
+                            </div>
+                            <div class="table">
+                                <h1><b class="table-header">Software</b></h1><br>
+                                <table>
+                                    <tbody>
+                                        <tr class="tr">
+                                            <th class="cell">Operating system:</th><th class="cell2">{{detail.Operating_system}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">Skin:</th><th class="cell2">{{detail.Skin}}</th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="table">
+                                <h1><b class="table-header">Connectivity</b></h1><br>
+                                <table>
+                                    <tbody>
+                                        <tr class="tr">
+                                            <th class="cell">Wi-Fi:</th><th class="cell2">{{detail.Wi_fi}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">GPS:</th><th class="cell2">{{detail.GPS}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">Bluetooth:</th><th class="cell2">{{detail.Bluetooth}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">USB Type-C:</th><th class="cell2">{{detail.USB_Type_C}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">Number of SIMs:</th><th class="cell2">{{detail.Number_of_SIMs}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">SIM Type:</th><th class="cell2">{{detail.Sim_Type}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">GSM/CDMA:</th><th class="cell2">{{detail.GSM_CDMA}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">3G:</th><th class="cell2">{{detail.ThreeG}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">4G/LTE:</th><th class="cell2">{{detail.FourG}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">5G:</th><th class="cell2">{{detail.FiveG}}</th>
+                                        </tr>
+                                    </tbody>
+                                    
+                                </table>
+                            </div>
+                            <div class="table">
+                                <h1><b class="table-header">Sensors</b></h1><br>
+                                <table>
+                                    <tbody>
+                                        <tr class="tr">
+                                            <th class="cell">In-Display Fingerprint Sensor:</th><th class="cell2">{{detail.In_Display_Fingerprint_Sensor}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">Compass/ Magnetometer:</th><th class="cell2">{{detail.Compass_Magnetometer}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">Proximity sensor:</th><th class="cell2">{{detail.Proximity_sensor}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">Accelerometer:</th><th class="cell2">{{detail.Accelerometer}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">Ambient light sensor:</th><th class="cell2">{{detail.Ambient_light_sensor}}</th>
+                                        </tr>
+                                        <tr class="tr">
+                                            <th class="cell">Gyroscope:</th><th class="cell2">{{detail.Gyroscope}}</th>
+                                        </tr>
+                                    </tbody>
+                                    
+                                </table>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            
+            {% else%}
+                <h3 class="No Product">No Product found !!</h3>
+            {% endif %}
+            </div>
+        </div>
+    <script src="{% static 'main/js/lightbox-plus-jquery.min.js' %}"></script>
+
+ </section>
+ {% endblock banner_slider %}

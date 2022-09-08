@@ -1,0 +1,17 @@
+{% for model in data %}
+    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+        <div class="single-product">
+            <div class="product-thumb">
+                <a href="/specification/{{model.Model}}-price-in-india/{{model.id}}"><img src="{{ model.Thumbnail.url}}" alt=""></a>
+            </div>
+            <div class="product-title">
+                <h3><a href="/specification/{{model.Model}}-price-in-india/{{model.id}}">{{model.Model}}</a></h3>
+            </div>
+            <!-- <div class="product-btns">
+                <a href="#" class="btn-round mr-2"><i class="fa fa-shopping-cart"></i></a>
+                <a href="#" class="btn-round"><i class="fa fa-heart"></i></a>
+            </div> -->
+        </div>
+        
+    </div>
+{% endfor %}

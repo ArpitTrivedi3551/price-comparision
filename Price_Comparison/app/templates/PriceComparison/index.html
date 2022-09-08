@@ -1,0 +1,236 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="utf-8">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+	<title>Price Comparison</title>
+	<link rel="stylesheet" href="{% static 'main/css/Fontawesome.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'PriceComparison/css/style.css'%}"/>
+	<!--using FontAwesome---------------->
+	<script src="{% static 'main/js/all.min.js' %}"></script>
+</head>
+	<body>
+		<header>
+			<div class="logo">{% block title %}Price{% endblock title %}</div>
+			<nav>
+				<ul style="background: none;">				  
+					<li style="background: none;"><a style="background: none;" href="/">Home</a></li>
+					<li><a href="{% url 'category' %}">Category</a></li>
+					<form class="form-inline my-2 my-lg-0" action="/search">
+						<div class="input-group">
+							<input name="q" type="text" class="form-control" placeholder="search" />
+							<div class="input-group-append">
+							  <button class="btn btn-dark" type="submit" id="button-addon2" style="background-color: none">Search</button>
+							</div>
+						  </div>
+					</form>
+				</ul>
+			</nav>
+			<div class="menu-toggle"><i class="fa fa-bars"></i></div>
+	
+		</header>
+	
+		
+		<script>
+			const btn = document.querySelector('.menu-toggle');		
+			const nav = document.querySelector('nav');
+	
+			btn.addEventListener('click', ()=>{
+	
+				nav.classList.toggle('active');
+			})
+		</script>
+	
+		<!-- <div class="Progressbar"></div> -->
+		<!-- <div class="scrollPath"></div> -->
+		<!-- <section>
+			<div class="container">
+				<h2>PriceComparison</h2>
+				<div class="wrapper">
+				{% for model in Brands %}
+					<div class="product">
+						<div class="product-thumb" style="width: 20px;">
+							<a href="/specification/{{model.Model}}/{{model.id}}"><img src="{{ model.Thumbnail.url}}" alt=""></a>
+						</div>
+						<div class="product-title">
+							<h3><a href="/specification/{{model.Model}}/{{model.id}}">{{model.Model}}</a></h3>
+						</div>
+					</div>
+					<div class="product">
+						<div class="product-thumb" style="width: 20px;">
+							<a href="/specification/{{model.Model}}/{{model.id}}"><img src="{{ model.Thumbnail.url}}" alt=""></a>
+						</div>
+						<div class="product-title">
+							<h3><a href="/specification/{{model.Model}}/{{model.id}}">{{model.Model}}</a></h3>
+						</div>
+					</div>
+					<div class="product">
+						<div class="product-thumb" style="width: 20px;">
+							<a href="/specification/{{model.Model}}/{{model.id}}"><img src="{{ model.Thumbnail.url}}" alt=""></a>
+						</div>
+						<div class="product-title">
+							<h3><a href="/specification/{{model.Model}}/{{model.id}}">{{model.Model}}</a></h3>
+						</div>
+					</div>
+					<div class="product">
+						<div class="product-thumb" style="width: 20px;">
+							<a href="/specification/{{model.Model}}/{{model.id}}"><img src="{{ model.Thumbnail.url}}" alt=""></a>
+						</div>
+						<div class="product-title">
+							<h3><a href="/specification/{{model.Model}}/{{model.id}}">{{model.Model}}</a></h3>
+						</div>
+					</div>
+					<div class="product">
+						<div class="product-thumb" style="width: 20px;">
+							<a href="/specification/{{model.Model}}/{{model.id}}"><img src="{{ model.Thumbnail.url}}" alt=""></a>
+						</div>
+						<div class="product-title">
+							<h3><a href="/specification/{{model.Model}}/{{model.id}}">{{model.Model}}</a></h3>
+						</div>
+					</div>
+					<div class="product">
+						<div class="product-thumb" style="width: 20px;">
+							<a href="/specification/{{model.Model}}/{{model.id}}"><img src="{{ model.Thumbnail.url}}" alt=""></a>
+						</div>
+						<div class="product-title">
+							<h3><a href="/specification/{{model.Model}}/{{model.id}}">{{model.Model}}</a></h3>
+						</div>
+					</div>
+					<div class="product">
+						<div class="product-thumb" style="width: 20px;">
+							<a href="/specification/{{model.Model}}/{{model.id}}"><img src="{{ model.Thumbnail.url}}" alt=""></a>
+						</div>
+						<div class="product-title">
+							<h3><a href="/specification/{{model.Model}}/{{model.id}}">{{model.Model}}</a></h3>
+						</div>
+					</div>
+					<div class="product">
+						<div class="product-thumb" style="width: 20px;">
+							<a href="/specification/{{model.Model}}/{{model.id}}"><img src="{{ model.Thumbnail.url}}" alt=""></a>
+						</div>
+						<div class="product-title">
+							<h3><a href="/specification/{{model.Model}}/{{model.id}}">{{model.Model}}</a></h3>
+						</div>
+					</div>
+					<div class="product">
+						<div class="product-thumb" style="width: 20px;">
+							<a href="/specification/{{model.Model}}/{{model.id}}"><img src="{{ model.Thumbnail.url}}" alt=""></a>
+						</div>
+						<div class="product-title">
+							<h3><a href="/specification/{{model.Model}}/{{model.id}}">{{model.Model}}</a></h3>
+						</div>
+					</div>
+					<div class="product">
+						<div class="product-thumb" style="width: 20px;">
+							<a href="/specification/{{model.Model}}/{{model.id}}"><img src="{{ model.Thumbnail.url}}" alt=""></a>
+						</div>
+						<div class="product-title">
+							<h3><a href="/specification/{{model.Model}}/{{model.id}}">{{model.Model}}</a></h3>
+						</div>
+					</div>
+				</div>
+				</div> 
+				
+				{% endfor%}
+			</div>
+		</section> -->
+
+		<!-- <div class="sidebar">
+			<div class="logo-details">
+			  <i class='fa fa-bars icon'></i>
+				<div class="logo_name">CodingLab</div>
+				<i class='bx bx-menu' id="btn" ></i>
+			</div>
+			<ul class="nav-list">
+			  <li>
+				  <i class='fa fa-bars' ></i>
+				 <input type="text" placeholder="Search...">
+				 <span class="tooltip">Search</span>
+			  </li>
+			  <li>
+				<a href="#">
+				  <i class='bx bx-grid-alt'></i>
+				  <span class="links_name">Dashboard</span>
+				</a>
+				 <span class="tooltip">Dashboard</span>
+			  </li>
+			  <li>
+			   <a href="#">
+				 <i class='bx bx-user' ></i>
+				 <span class="links_name">User</span>
+			   </a>
+			   <span class="tooltip">User</span>
+			 </li>
+			 <li>
+			   <a href="#">
+				 <i class='bx bx-chat' ></i>
+				 <span class="links_name">Messages</span>
+			   </a>
+			   <span class="tooltip">Messages</span>
+			 </li>
+			 <li>
+			   <a href="#">
+				 <i class='bx bx-pie-chart-alt-2' ></i>
+				 <span class="links_name">Analytics</span>
+			   </a>
+			   <span class="tooltip">Analytics</span>
+			 </li>
+			 <li>
+			   <a href="#">
+				 <i class='bx bx-folder' ></i>
+				 <span class="links_name">File Manager</span>
+			   </a>
+			   <span class="tooltip">Files</span>
+			 </li>
+			 <li>
+			   <a href="#">
+				 <i class='bx bx-cart-alt' ></i>
+				 <span class="links_name">Order</span>
+			   </a>
+			   <span class="tooltip">Order</span>
+			 </li>
+			 <li>
+			   <a href="#">
+				 <i class='bx bx-heart' ></i>
+				 <span class="links_name">Saved</span>
+			   </a>
+			   <span class="tooltip">Saved</span>
+			 </li>
+			 <li>
+			   <a href="#">
+				 <i class='bx bx-cog' ></i>
+				 <span class="links_name">Setting</span>
+			   </a>
+			   <span class="tooltip">Setting</span>
+			 </li>
+			 <li class="profile">
+				 <div class="profile-details">
+				   <img src="profile.jpg" alt="profileImg">
+				   <div class="name_job">
+					 <div class="name">Prem Shahi</div>
+					 <div class="job">Web designer</div>
+				   </div>
+				 </div>
+				 <i class='bx bx-log-out' id="log_out" ></i>
+			 </li>
+			</ul>
+		  </div>
+		  <section class="home-section">
+			  <div class="text">Dashboard</div>
+		  </section>
+		
+		  <script src="{% static 'PriceComparison/js/script.js' %}"></script>
+		 -->
+		<!-- <script type="text/js">
+			let progress = document.getElementById('Progressbar');
+			let totalheight = document.body.scrollHeight = window.innerHeight;
+			window.onscroll = function(){
+				let progressHeight = (window.pageYOffset / totalheight) * 100;
+				progress.height = progressHeight + "%";
+			}
+		</script> -->
+	</body>
+</html>

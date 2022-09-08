@@ -1,0 +1,212 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block Headline %}Home{% endblock Headline %}
+
+{% block banner_slider %} 
+
+    <section class="section-bg">
+    
+     <div class="container">
+        <h3 class="br"><b>Brands</b></h3>
+       <main>
+           <div class="slide-container">
+            <div id="slide-left" class="arrows"><i class="fa fa-arrow-left" style="width: 30px; color: azure;"></i></i></div>
+            
+                <section class="slider-cointainer" id="slider">
+                    {% if brand %}   
+                    {% for brand in brand %}
+                    <div class="thumbnail" >
+                        <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                            <div class="BRAND" >
+                                <div class="category">
+                                    <div class="product-thumb">
+                                        <a href="/category/{{brand.title}}"><img src="{{brand.image.url}}" alt="connect" /></a>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                </section>
+            
+            <div id="slide-right" class="arrows"><i class="fa fa-arrow-right" style="width: 30px; color: azure;"></i></div>
+           </div>
+           <div class="row button-center">
+            <div class="col-xl-6 centered"style="float:right">
+                <a href="{% url 'category' %}" class="bttn-def " style="float:right"><span>View more</span></a>
+            </div>
+        </div>
+       </main>         
+       <br>
+       <h3 class="br"><b>Mobiles</b></h3>
+       <main>
+        <div class="slide-container">
+            <div id="slide-left2" class="arrows"><i class="fa fa-arrow-left" style="width: 30px; color: azure;"></i></div>
+
+         
+             <section class="slider-cointainer" id="slider2">
+                {% if Model %}
+                {% for model in Model %}
+                 <div class="thumbnail" id="thumbnail">
+                            <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                                <div class="single-product" style="width: 300px;">
+                                    <div class="product-thumb">
+                                        <a href="/specification/{{model.Model}}-price-in-india/{{model.id}}"><img src="{{ model.Thumbnail.url}}" alt="" style="width: fit-content; height:fit-content;"></a>
+                                    </div>
+                                    <div class="product-title">
+                                        <h3><a href="/specification/{{model.Model}}-price-in-india/{{model.id}}">{{model.Model}}</a></h3>
+                                    </div>
+                                    <!-- <div class="product-btns">
+                                        <a href="#" class="btn-round mr-2"><i class="fa fa-shopping-cart"></i></a>
+                                        <a href="#" class="btn-round"><i class="fa fa-heart"></i></a>
+                                    </div> -->
+                                </div>
+                                
+                            </div>
+                          
+                        </div>                 
+                        {% endfor %}
+                 {% endif %}
+             </section>
+         
+             <div id="slide-right2" class="arrows"><i class="fa fa-arrow-right" style="width: 30px; color: azure;"></i></div>
+
+        </div>
+        <div class="row button-center">
+         <div class="col-xl-6 centered"style="float:right">
+             <a href="{% url 'mobile' %}" class="bttn-def " style="float:right"><span>View more</span></a>
+         </div>
+     </div>
+    </main>  
+ </section>
+ <script>
+    let thumbnails = document.getElementsByClassName('thumbnail');
+    let slider = document.getElementById('slider');
+
+    let buttonRight = document.getElementById('slide-right');
+    let buttonLeft = document.getElementById('slide-left');
+
+    buttonLeft.addEventListener('click', function(){
+        slider.scrollLeft -= 250;
+    })
+
+    buttonRight.addEventListener('click', function(){
+        slider.scrollLeft += 250;
+    })
+
+    const maxScrollLeft = slider.scrollWidth - slider.clientWidth;
+    // alert(maxScrollLeft);
+    // alert("Left Scroll:" + slider.scrollLeft);
+
+    //AUTO PLAY THE SLIDER 
+    function autoPlay() {
+        if (slider.scrollLeft > (maxScrollLeft - 1)) {
+            slider.scrollLeft -= maxScrollLeft;
+        } else {
+            slider.scrollLeft += 1;
+        }
+    }
+    let play = setInterval(autoPlay, 50);
+
+    // PAUSE THE SLIDE ON HOVER
+    for (var i=0; i < thumbnails.length; i++){
+
+    thumbnails[i].addEventListener('mouseover', function() {
+        clearInterval(play);
+    });
+
+    thumbnails[i].addEventListener('mouseout', function() {
+        return play = setInterval(autoPlay, 50);
+    });
+    }
+
+    let thumbnails2 = document.getElementById('thumbnail');
+    let slider2 = document.getElementById('slider2');
+
+    let buttonRight2 = document.getElementById('slide-right2');
+    let buttonLeft2 = document.getElementById('slide-left2');
+    buttonLeft2.addEventListener('click', function(){
+        slider2.scrollLeft -= 300;
+    })
+
+    buttonRight2.addEventListener('click', function(){
+        slider2.scrollLeft +=  300;
+    })
+
+    const maxScrollLeft2 = slider2.scrollWidth - slider2.clientWidth;
+    // alert(maxScrollLeft);
+    // alert("Left Scroll:" + slider2.scrollLeft);
+
+    //AUTO PLAY THE SLIDER 
+    function autoPlay2() {
+        if (slider2.scrollLeft > (maxScrollLeft2 - 1)) {
+            slider2.scrollLeft -= maxScrollLeft2;
+        } else {
+            slider2.scrollLeft += 1;
+        }
+    }
+    let play2 = setInterval(autoPlay2, 50);
+
+    // PAUSE THE SLIDE ON HOVER
+    for (var i=0; i < thumbnails2.length; i++){
+
+    thumbnails2[i].addEventListener('mouseover', function() {
+        clearInterval(play2);
+    });
+
+    thumbnails2[i].addEventListener('mouseout', function() {
+        return play2 = setInterval(autoPlay2, 50);
+    });
+    }
+</script>
+<style>
+    nav2 {
+    position: fixed;
+    bottom: -260px;
+    right: 0;
+    height: 300px;
+    width: 100%;
+    background-color: rgb(183, 190, 221);
+    transition: .5s;
+    margin: 5px 5px ;
+}
+
+p {
+    line-height: 30px;
+}
+
+nav2.on {
+    bottom: 0;
+}
+
+.arrow {
+    position: fixed;
+    bottom: 50px;
+    right: 30px;
+    height: 40px;
+    width: 40px;
+    border: 2px solid rgb(228, 228, 228);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 30px;
+    color: white;
+    background-color: rgb(183, 190, 221);
+    transition: .5s;
+}
+
+.arrow.on {
+    bottom: 320px;
+    transform: rotate(180deg);
+}
+
+i {
+    transition: .5s;
+}
+
+i.on {
+    transform: rotate(-180deg);
+}
+</style>
+ {% endblock banner_slider %}

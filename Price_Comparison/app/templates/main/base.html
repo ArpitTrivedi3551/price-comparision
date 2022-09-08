@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Document | {% block Headline %} {% endblock Headline %}</title>
+	<link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+	
+	<!-- <script src="{% static 'main/js/script.js' %}"></script> -->
+	<script type="text/javascript" src="{% static 'main/js/jquery.min.js' %}"></script>
+	<script src="{% static 'main/js/all.min.js' %}"></script>
+	<!--===================www.bootstrap======================-->
+	<link rel="stylesheet" href="{% static 'main/css/bootstrap.min.css' %}">
+	<!--===================Fontawesome======================-->
+	<link rel="stylesheet" href="{% static 'main/css/Fontawesome.css' %}">
+
+	<link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+</head>
+<body>
+	<header style="z-index: 100;">
+		<div class="logo"><b>{% block title %}Price{% endblock title %}</b></div>
+	    <nav>
+	        <ul style="background: none;">				  
+	            <li style="background: none;"><a  href="/"><b>Home</b></a></li>
+	            <li style="background: none;"><a  href="{% url 'mobile' %}"><b>Mobile</b></a></li>
+	            <li><a href="{% url 'category' %}"><b>Category</b></a></li>
+				<form class="form-inline my-2 my-lg-0" action="/search">
+					<div class="input-group">
+						<input name="q" type="text" class="form-control" placeholder="search" style="   background-color:transparent; border-left: 0ch; border-top: 1% #fff; border-width: 2px; color:#fff;
+						"/>
+						<div class="input-group-append">
+						  <button class="btn btn-dark" type="submit" id="button-addon2" style="background-color:black; color: #fff; width:fit-content;">Search</button>
+						</div>
+					  </div>
+				</form>
+	        </ul>
+		</nav>
+		<div class="menu-toggle"><i class="fa fa-bars"></i></div>
+
+	</header>
+
+	
+	<script>
+		const btn = document.querySelector('.menu-toggle');		
+		const nav = document.querySelector('nav');
+
+		btn.addEventListener('click', ()=>{
+
+			nav.classList.toggle('active');
+		})
+	</script>
+    {% block banner_slider %} {% endblock banner_slider %}
+</body>
+</html>

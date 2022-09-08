@@ -1,0 +1,342 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block Headline %}Home{% endblock Headline %}
+
+{% block title %}Mobile{% endblock title %}
+{% block banner_slider %} 
+<script type="text/javascript" src="{% static 'main/js/product-filter.js' %}"></script>
+
+<link rel="stylesheet" href="{% static 'main/css/component.css' %}">
+
+
+
+<div id="st-container" class="st-container">
+    <nav class="st-menu st-effect-11" id="menu-11">
+        <h2 class="icon icon-lab">Filters</h2>
+        <ul2>
+            <li2><div class="price-slider">Price Range<br><br>
+                <span>Min <input type="number" value="{{minMaxPrice.Price_in_india__min}}" max={{minMaxPrice.Price_in_india__max}} min={{minMaxPrice.Price_in_india__min}} id="minPricenum"/><br>
+                Max <input type="number" value={{minMaxPrice.Price_in_india__max}} max={{minMaxPrice.Price_in_india__max}} min={{minMaxPrice.Price_in_india__min}} id="maxPricenum"/>
+            </span>
+                <p>{{minMaxPrice.Price_in_india__min}}-{{minMaxPrice.Price_in_india__max}}</p>
+                    <input value="{{minMaxPrice.Price_in_india__min}}" max={{minMaxPrice.Price_in_india__max}} min={{minMaxPrice.Price_in_india__min}} step="500" type="range" style="height: auto; padding-right: 0%;" id="minPricesdr"/>
+                    <input value={{minMaxPrice.Price_in_india__max}} max={{minMaxPrice.Price_in_india__max}} min={{minMaxPrice.Price_in_india__min}} step="500" type="range" style="height: auto; padding-right: 0%;" id="maxPricesdr"/>
+                    <button min={{minMaxPrice.Price_in_india__min}} max={{minMaxPrice.Price_in_india__max}} class="btn btn-info btn-sm" id="Pricefilterbtn" style="position: relative;">Filter</button>
+            </div></li2>
+            <li2><a class="icon icon-location" href="#">Brand &emsp;<i class="fa fa-angle-down" ></i></a></li2>
+            <div class="brands-info"><ul2>
+                {% for Details in Brand %}
+                <li2><a class="icon-icon-location" href="#"> <input class="filter-checkbox" value="{{Details.brand__id}}" data-filter="brand" type="checkbox"/>{{Details.brand__title}}</a></li2>
+                {% endfor %}
+            </ul2></div>
+            <li2><a class="icon icon-ram" href="#">RAM &emsp;<i class="fa fa-angle-down" ></i></a></li2>
+            <div class="brands-ram"><ul2>
+                {% for Details in RAM %}
+                <li2><a class="icon-icon-location" href="#"> <input class="filter-checkbox" value="{{Details.RAM__id}}" data-filter="RAM" type="checkbox"/>{{Details.RAM__title}}</a></li2>
+                {% endfor %}
+            </ul2></div>
+            <li2><a class="icon icon-storage" href="#">Internal Storage &emsp;<i class="fa fa-angle-down" ></i></a></li2>
+            <div class="brands-storage"><ul2>
+                {% for Details in InternalStorage %}
+                <li2><a class="icon-icon-location" href="#"> <input class="filter-checkbox" value="{{Details.InternalStorage__id}}" data-filter="InternalStorage" type="checkbox"/>{{Details.InternalStorage__title}}</a></li2>
+                {% endfor %}
+            </ul2></div>
+            <li2><a class="icon icon-screensize" href="#">Screen Size &emsp;<i class="fa fa-angle-down" ></i></a></li2>
+            <div class="brands-screensize"><ul2>
+                {% for Details in ScreenSize %}
+                <li2><a class="icon-icon-location" href="#"> <input class="filter-checkbox" value="{{Details.ScreenSize__id}}" data-filter="ScreenSize" type="checkbox"/>{{Details.ScreenSize__title}}</a></li2>
+                {% endfor %}
+            </ul2></div>
+            <li2><a class="icon icon-battery" href="#">Battery Capacity &emsp;<i class="fa fa-angle-down" ></i></a></li2>
+            <div class="brands-battery"><ul2>
+                {% for Details in BatteryCapacity %}
+                <li2><a class="icon-icon-location" href="#"> <input class="filter-checkbox" value="{{Details.BatteryCapacity__id}}" data-filter="BatteryCapacity" type="checkbox"/>{{Details.BatteryCapacity__title}}</a></li2>
+                {% endfor %}
+            </ul2></div>
+            <li2><a class="icon icon-rear" href="#">Rear Camera &emsp;<i class="fa fa-angle-down" ></i></a></li2>
+            <div class="brands-rear-camera"><ul2>
+                {% for Details in PrimaryRearCamera %}
+                <li2><a class="icon-icon-location" href="#"> <input class="filter-checkbox" value="{{Details.PrimaryRearCamera__id}}" data-filter="PrimaryRearCamera" type="checkbox"/>{{Details.PrimaryRearCamera__title}}</a></li2>
+                {% endfor %}
+            </ul2></div>
+            <li2><a class="icon icon-fornt" href="#">Front Camera &emsp;<i class="fa fa-angle-down" ></i></a></li2>
+            <div class="brands-fornt-camera"><ul2>
+                {% for Details in FrontCamera %}
+                <li2><a class="icon-icon-location" href="#"> <input class="filter-checkbox" value="{{Details.FrontCamera__id}}" data-filter="FrontCamera" type="checkbox"/>{{Details.FrontCamera__title}}</a></li2>
+                {% endfor %}
+            </ul2></div>
+            <li2><a class="icon icon-os" href="#">Operating System &emsp;<i class="fa fa-angle-down" ></i></a></li2>
+            <div class="brands-os"><ul2>
+                {% for Details in OperatingSystem %}
+                <li2><a class="icon-icon-location" href="#"> <input class="filter-checkbox" value="{{Details.OperatingSystem__id}}" data-filter="OperatingSystem" type="checkbox"/>{{Details.OperatingSystem__title}}</a></li2>
+                {% endfor %}
+            </ul2></div>
+            <li2><a class="icon icon-network" href="#">Network Connectivity &emsp;<i class="fa fa-angle-down" ></i></a></li2>
+            <div class="brands-network"><ul2>
+                {% for Details in NetworkConnectivity %}
+                <li2><a class="icon-icon-location" href="#"> <input class="filter-checkbox" value="{{Details.NetworkConnectivity__id}}" data-filter="NetworkConnectivity" type="checkbox"/>{{Details.NetworkConnectivity__title}}</a></li2>
+                {% endfor %}
+            </ul2></div>
+            <li2><a class="icon icon-processor" href="#">Processor Speed &emsp;<i class="fa fa-angle-down" ></i></a></li2>
+            <div class="brands-processor-speed"><ul2>
+                {% for Details in ProcessorSpeed %}
+                <li2><a class="icon-icon-location" href="#"> <input class="filter-checkbox" value="{{Details.ProcessorSpeed__id}}" data-filter="ProcessorSpeed" type="checkbox"/>{{Details.ProcessorSpeed__title}}</a></li2>
+                {% endfor %}
+            </ul2></div>
+            <li2><a class="icon icon-cores" href="#">Number of Cores &emsp;<i class="fa fa-angle-down" ></i></a></li2>
+            <div class="brands-number-of-cores"><ul2>
+                {% for Details in NumberOfCores %}
+                <li2><a class="icon-icon-location" href="#"> <input class="filter-checkbox" value="{{Details.NumberOfCores__id}}" data-filter="NumberOfCores" type="checkbox"/>{{Details.NumberOfCores__title}}</a></li2>
+                {% endfor %}
+            </ul2></div>
+            <li2><a class="icon icon-Availability" href="#">Availability &emsp;<i class="fa fa-angle-down" ></i></a></li2>
+            <div class="brands-Availability"><ul2>
+                {% for Details in Availability %}
+                <li2><a class="icon-icon-location" href="#"> <input class="filter-checkbox" value="{{Details.Availability__id}}" data-filter="Availability" type="checkbox"/>{{Details.Availability__title}}</a></li2>
+                {% endfor %}
+            </ul2></div>
+            <br><br><br><br><br><br>
+        </ul2>
+    </nav>
+    <div class="st-pusher">
+        <div class="st-content"><!-- this is the wrapper for the content -->
+            <div class="st-content-inner"><!-- extra div for emulating position:fixed of the menu -->
+                <div class="main clearfix">
+                    <div id="st-trigger-effects" class="column" style="margin-top: 100px;">
+                        <section class="section-bg" style="padding: 0px; margin: 0px">                        
+                         <div class="container">       
+                            <div class="row" id="filted-product">
+                                <p class="ajaxLoader">Loading...</p>
+                            {% if Model %}
+                                {% for model in Model %}
+                                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                                    <div class="single-product">
+                                        <div class="product-thumb">
+                                            <a href="/specification/{{model.Model}}-price-in-india/{{model.id}}"><img src="{{ model.Thumbnail.url}}" alt=""></a>
+                                        </div>
+                                        <div class="product-title">
+                                            <h3><a href="/specification/{{model.Model}}-price-in-india/{{model.id}}">{{model.Model}}</a></h3>
+                                        </div>
+                                        <!-- <div class="product-btns">
+                                            <a href="#" class="btn-round mr-2"><i class="fa fa-shopping-cart"></i></a>
+                                            <a href="#" class="btn-round"><i class="fa fa-heart"></i></a>
+                                        </div> -->
+                                    </div>
+                                    
+                                </div>
+                                {% endfor %}
+                            {% endif %}
+                        
+                            </div>
+                            <div class="row button-center">
+                                {% if brand.has_next %}
+                                <div class="col-xl-6 centered">
+                                    <a href="?page={{ brand.next_page_number }}" class="bttn-def"><span>Load more</span></a>
+                                </div>
+                                {% endif %}
+                            </div>
+                         </div>
+                        </section>
+                        <button data-effect="st-effect-11"><filtertext>Filters <i class="fa fa-filter" style="font-size: 25px;"></i></filtertext></button>                       
+                    </div>
+                </div><!-- /main -->
+            </div><!-- /st-content-inner -->
+        </div><!-- /st-content -->
+    </div><!-- /st-pusher -->
+</div><!-- /st-container -->
+<script src="{% static 'main/js/classie.js' %}"></script>
+<script src="{% static 'main/js/sidebarEffects.js' %}"></script>
+
+
+
+
+ <!-- <div class="arrow active"><i class="fa fa-arrow-up active"></i></div>
+ <nav2 class="active" style="padding: 10px;"><b style="font-size: 30px; font-family :'Times New Roman', Times, serif;">Filter</b><div>Price</div></nav2>
+ <script>
+    const divArrow = document.querySelector('.arrow');		
+    const iArrow = document.querySelector('.fa-arrow-up');
+    const nav2 = document.querySelector('nav2');
+
+    divArrow.addEventListener('click', ()=>{
+
+        divArrow.classList.toggle("on");
+        iArrow.classList.toggle('on');
+        nav2.classList.toggle('on');
+    })
+
+</script> -->
+
+<script>
+    (function() {
+ 
+ var parent = document.querySelector(".price-slider");
+ if(!parent) return;
+
+ var
+   rangeS = parent.querySelectorAll("input[type=range]"),
+   numberS = parent.querySelectorAll("input[type=number]");
+
+ rangeS.forEach(function(el) {
+   el.oninput = function() {
+     var slide1 = parseFloat(rangeS[0].value),
+        slide2 = parseFloat(rangeS[1].value);
+
+     if (slide1 > slide2) {
+[slide1, slide2] = [slide2, slide1];
+     }
+
+     numberS[0].value = slide1;
+     numberS[1].value = slide2;
+   }
+ });
+
+//  numberS.forEach(function(el) {
+//    el.oninput = function() {
+// var number1 = parseFloat(numberS[0].value),
+// number2 = parseFloat(numberS[1].value);
+
+//      if (number1 > number2) {
+//        var tmp = number1;
+//        numberS[0].value = number2;
+//        numberS[1].value = tmp;
+//      }
+
+//      rangeS[0].value = number1;
+//      rangeS[1].value = number2;
+
+//    }
+//  });
+
+})();
+</script>
+
+<script>
+   const drop_btn = document.querySelector(".icon.icon-location"); 
+   const menu_wrapper = document.querySelector(".brands-info");
+   const drop_btn2 = document.querySelector(".icon.icon-ram"); 
+   const menu_wrapper2 = document.querySelector(".brands-ram");
+   const drop_btn3 = document.querySelector(".icon.icon-storage"); 
+   const menu_wrapper3 = document.querySelector(".brands-storage");
+   const drop_btn4 = document.querySelector(".icon.icon-screensize"); 
+   const menu_wrapper4 = document.querySelector(".brands-screensize");
+   const drop_btn5 = document.querySelector(".icon.icon-battery"); 
+   const menu_wrapper5 = document.querySelector(".brands-battery");
+   const drop_btn6 = document.querySelector(".icon.icon-rear"); 
+   const menu_wrapper6 = document.querySelector(".brands-rear-camera");
+   const drop_btn7 = document.querySelector(".icon.icon-fornt"); 
+   const menu_wrapper7 = document.querySelector(".brands-fornt-camera");
+   const drop_btn8 = document.querySelector(".icon.icon-os"); 
+   const menu_wrapper8 = document.querySelector(".brands-os");
+   const drop_btn9 = document.querySelector(".icon.icon-network"); 
+   const menu_wrapper9 = document.querySelector(".brands-network");
+   const drop_btn10 = document.querySelector(".icon.icon-processor"); 
+   const menu_wrapper10 = document.querySelector(".brands-processor-speed");
+   const drop_btn11 = document.querySelector(".icon.icon-cores"); 
+   const menu_wrapper11 = document.querySelector(".brands-number-of-cores");
+   const drop_btn12 = document.querySelector(".icon.icon-Availability"); 
+   const menu_wrapper12 = document.querySelector(".brands-Availability");
+   
+//    const menu_bar_wrapper = document.querySelector(".menu-bar");
+//    const Setting_drop = document.querySelector(".Setting-drop");
+//    const setting_item = document.querySelector(".setting-item");
+//    const back_setting_btn = document.querySelector(".back-setting-btn");
+
+   drop_btn.onclick = (()=>{
+    menu_wrapper.classList.toggle("show");
+   });
+   drop_btn2.onclick = (()=>{
+    menu_wrapper2.classList.toggle("show");
+   });
+   drop_btn3.onclick = (()=>{
+    menu_wrapper3.classList.toggle("show");
+   });
+   drop_btn4.onclick = (()=>{
+    menu_wrapper4.classList.toggle("show");
+   });
+   drop_btn5.onclick = (()=>{
+    menu_wrapper5.classList.toggle("show");
+   });
+   drop_btn6.onclick = (()=>{
+    menu_wrapper6.classList.toggle("show");
+   });
+   drop_btn7.onclick = (()=>{
+    menu_wrapper7.classList.toggle("show");
+   });
+   drop_btn8.onclick = (()=>{
+    menu_wrapper8.classList.toggle("show");
+   });
+   drop_btn9.onclick = (()=>{
+    menu_wrapper9.classList.toggle("show");
+   });
+   drop_btn10.onclick = (()=>{
+    menu_wrapper10.classList.toggle("show");
+   });
+   drop_btn11.onclick = (()=>{
+    menu_wrapper11.classList.toggle("show");
+   });
+   drop_btn12.onclick = (()=>{
+    menu_wrapper12.classList.toggle("show");
+   });
+//    setting_item.onclick = (()=>{
+//     menu_bar_wrapper.style.marginLeft = "-100px";
+//     setTimeout(()=> {
+//         Setting_drop.style.display = "block";
+//     },100);
+//     // menu_bar_wrapper.classList.toggle("show");
+//    });
+//    back_setting_btn.onclick = (()=>{
+//     menu_bar_wrapper.style.marginLeft = "";
+//     Setting_drop.style.display = "none";
+//    });
+</script>
+<style>
+    nav2 {
+    position: fixed;
+    bottom: -260px;
+    right: 0;
+    height: 300px;
+    width: 100%;
+    background-color: rgb(183, 190, 221);
+    transition: .5s;
+    margin: 5px 5px ;
+}
+
+p {
+    line-height: 30px;
+}
+
+nav2.on {
+    bottom: 0;
+}
+
+.arrow {
+    position: fixed;
+    bottom: 50px;
+    right: 30px;
+    height: 40px;
+    width: 40px;
+    border: 2px solid rgb(228, 228, 228);
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 30px;
+    color: white;
+    background-color: rgb(183, 190, 221);
+    transition: .5s;
+}
+
+.arrow.on {
+    bottom: 320px;
+    transform: rotate(180deg);
+}
+
+i {
+    transition: .5s;
+}
+
+i.on {
+    transform: rotate(-180deg);
+}
+</style>
+ {% endblock banner_slider %}
